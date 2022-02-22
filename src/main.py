@@ -32,8 +32,9 @@ def run(driver_path: str) -> None:
         driver.close()
 
 
-def main(**kwargs):
-    print(kwargs)
+def main(*args, **kwargs):
+    print("args:", args)
+    print("kwargs:", kwargs)
     driver_file_name = "chromedriver"
     with TemporaryDirectory() as tmp_dir:
         tmp_driver_path = os.path.join(tmp_dir, driver_file_name)
@@ -45,5 +46,5 @@ def main(**kwargs):
         run(driver_path=tmp_driver_path)
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
