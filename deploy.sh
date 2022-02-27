@@ -11,7 +11,7 @@ gcloud functions deploy \
   --region=asia-northeast1 \
   --set-build-env-vars="LINE_NOTIFY_ACCESS_TOKEN=$(cat src/line/access_token.txt)" \
   --entry-point='main' \
-  --memory=512MB \
+  --memory='1024MB' \
   --runtime 'python39' \
   --trigger-topic 'hourly' \
   --service-account="${PROJECT_ID}@appspot.gserviceaccount.com" \
