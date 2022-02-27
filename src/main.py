@@ -32,20 +32,21 @@ def is_about_ps5(s: str) -> bool:
     return re.search(r"playstation5|ps5", s.lower()) is not None
 
 
-def run(driver_path: str, chromium_path: str) -> None:
+def run(driver_path: str, chromium_path: str = None) -> None:
     options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--window-size=1280x1696")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--hide-scrollbars")
-    options.add_argument("--enable-logging")
-    options.add_argument("--log-level=0")
-    options.add_argument("--v=99")
-    options.add_argument("--single-process")
-    options.add_argument("--ignore-certificate-errors")
-    options.add_argument("--disable-dev-shm-usage")
-    options.binary_location = chromium_path
+    # options.add_argument("--headless")
+    # options.add_argument("--disable-gpu")
+    # options.add_argument("--window-size=1280x1696")
+    # options.add_argument("--no-sandbox")
+    # options.add_argument("--hide-scrollbars")
+    # options.add_argument("--enable-logging")
+    # options.add_argument("--log-level=0")
+    # options.add_argument("--v=99")
+    # options.add_argument("--single-process")
+    # options.add_argument("--ignore-certificate-errors")
+    # options.add_argument("--disable-dev-shm-usage")
+    if chromium_path is not None:
+        options.binary_location = chromium_path
     driver = Chrome(
         service=Service(executable_path=driver_path),
         options=options,
@@ -82,4 +83,6 @@ def main(*args, **kwargs):
 
 
 if __name__ == '__main__':
-    main()
+    driver_path = "../chromedriver_mac64"
+    os.chmod(driver_path, 0o755)
+    run(driver_path=driver_path)
