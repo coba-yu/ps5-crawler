@@ -9,7 +9,7 @@ PROJECT_ID='spry-pier-279201'
 gcloud functions deploy \
   ps5-crawler \
   --region=asia-northeast1 \
-  --set-build-env-vars='LINE_NOTIFY_ACCESS_TOKEN=1rKprAC1sKGT49f8ZiwH6VsjLQFhbMjqnSFLnI577gz' \
+  --set-build-env-vars="LINE_NOTIFY_ACCESS_TOKEN=$(cat src/line/access_token.txt)" \
   --entry-point='main' \
   --memory=512MB \
   --runtime 'python39' \
