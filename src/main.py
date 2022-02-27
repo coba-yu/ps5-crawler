@@ -77,6 +77,7 @@ def main(*args, **kwargs):
     except Exception:
         response["exception"] = format_exc()
     finally:
+        print(response)
         return str(response)
 
 
