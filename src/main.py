@@ -55,6 +55,9 @@ def run(driver_path: str, chromium_path: str = None) -> None:
     try:
         elements = driver.find_elements(By.XPATH, "//*[@class='recommendImg']")
         for e in elements:
+            if type(e) == type(dict):
+                # dict の場合, element が見つかっていないので skip
+                continue
             alt = e.get_attribute("alt")
             if is_about_ps5(alt):
                 LineNotifier.notify(message="\n".join((
